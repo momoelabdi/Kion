@@ -1,20 +1,17 @@
 class ListingsController < ApplicationController
-    def index
-      @listings = Listing.all()
-    end
 
-    def create
-      @listing = Listing.new(listing_params)
-      @listing.save
-      redirect_to @listing
+  def index
+    @listings = Listing.all()
+  end
 
-    end
+  def create
+    @listing = Listing.new()
+    @listing.attributes = { title: params[:title], location: params[:location], description: params[:description] }
+    @listing.save
+    redirect_to root_path
+  end
 
-
-
-  private
-
-    def listing_params
-      params[:title].present? && params[:location].present? && params[:description].present?
-    end
+  def new
+    @listing = Listing.new
+  end
 end
