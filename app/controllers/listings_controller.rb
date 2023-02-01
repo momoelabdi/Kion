@@ -14,5 +14,15 @@ class ListingsController < ApplicationController
   def new
     @listing = Listing.new
   end
-end
 
+  def show
+    @listing = Listing.find(params[:id])
+  end
+
+  def update
+    @listing = Listing.find(params[:id])
+    @listing.attributes = { title: params[:title], location: params[:location], description: params[:description] }
+    @listing.save
+    redirect_to root_path
+  end
+end

@@ -7,4 +7,5 @@ root to: 'listings#index'
 get '/listings/new', to: 'listings#new'
 post '/listings', to: 'listings#create'
 get '/listings/:id', to: 'listings#show'
+get '/listings/:id/edit', to: 'listings#edit'
 end
