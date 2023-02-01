@@ -1,11 +1,21 @@
-<div class="card">
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">Title</th>
+      <th scope="col">Location</th>
+      <th scope="col">description</th>
+    </tr>
+  </thead>
+  <tbody>
   <%= @listings.each do |listing| %>
-    <div class="card-body">
-      <h5 class="card-title"><%= listing.id %></h5>
-      <h5 class="card-title"><%= listing.title %></h5>
-      <h6 class="card-subtitle mb-2 text-muted"><%= listing.location %></h6>
-      <p class="card-text"><%= listing.description %></p>
-      <p class="card-text"><%= listing.created_at %></p>
-    </div>
+    <tr>
+      <th scope="row"><%= listing.id %></th>
+      <td><%= listing.title %></td>
+      <td><%= listing.location %></td>
+      <td><%= listing.description %></td>
+    </tr>
   <% end %>
-</div>
+  </tbody>
+</table>
