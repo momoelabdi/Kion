@@ -4,16 +4,17 @@ class ListingsController < ApplicationController
     @listing = 'Hello World!'
   end
 
-  def new
+  def create
     @listing = Lintings.new(listing_params)
-    
     if @listing.save
       redirect_to index
     end
   end
 
   private
- def listing_params
-  params.require([:listings ]).permit()
- end
+
+  def listing_params
+    params.require([:title, :location, :description]).permit()
+  end
+
 end
