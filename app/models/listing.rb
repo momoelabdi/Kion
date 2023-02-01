@@ -1,3 +1,3 @@
 class Listing < ApplicationRecord
-  validates :title, presence: true
+  validates :title, :location, :description, presence: true
 end

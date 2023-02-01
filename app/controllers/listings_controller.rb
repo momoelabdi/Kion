@@ -1,20 +1,20 @@
 class ListingsController < ApplicationController
+    def index
+      @listings = Listing.all()
+    end
 
-  def index
-    @listing = 'Hello World!'
-  end
+    def create
+      @listing = Listing.new(listing_params)
+      @listing.save
+      redirect_to @listing
 
-  def create
-    @listing = Lintings.new(listing_params)
-    @listing.save
-    # if @listing.save
-    #   redirect_to index
-    # end
-  end
+    end
+
+
 
   private
 
-  def listing_params
-    params.require([ :title, :location, :description ]).permit()
-  end
+    def listing_params
+      params[:title].present? && params[:location].present? && params[:description].present?
+    end
 end
