@@ -9,14 +9,13 @@
     </tr>
   </thead>
   <tbody>
-  <%= @listings.each do |listing| %>
+  <% @listings.each do |listing| %>
     <tr>
-      <th scope="row"><%= listing.id %></th>
+      <th scope="row"><% listing.id %></th>
       <td><%= listing.title %></td>
       <td><%= listing.location %></td>
       <td><%= listing.description %></td>
-      <td><%= link_to "This", listing_path(listing.id)%> </td>
-
+      <td><%= link_to "View", listing_path(listing.id)%> </td>
     </tr>
   <% end %>
   </tbody>

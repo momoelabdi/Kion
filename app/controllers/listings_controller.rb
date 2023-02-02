@@ -26,9 +26,6 @@ class ListingsController < ApplicationController
     redirect_to root_path
   end
 
-  def edit
-    @listing = Listing.find(params[:id])
-  end
   def destroy
     @listing = Listing.find(params[:id])
     @listing.destroy
