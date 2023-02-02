@@ -21,7 +21,7 @@ class ListingsController < ApplicationController
 
   def update
     @listing = Listing.find(params[:id])
-    @listing.attributes = { title: params[:title], location: params[:location], description: params[:description] }
+    @listing.attributes = { user_id: params[:user_id], title: params[:title], location: params[:location], description: params[:description] }
     @listing.save
     redirect_to root_path
   end
@@ -33,6 +33,6 @@ class ListingsController < ApplicationController
   end
 
   def listings_params
-    params.permit(:title, :location, :description)
+    params.permit(:title, :location, :description, :user_id)
   end
 end
