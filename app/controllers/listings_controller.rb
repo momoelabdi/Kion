@@ -9,7 +9,9 @@ class ListingsController < ApplicationController
     @listing = Listing.new(listings_params)
     @listing.user_id = @current_user
     @listing.save
+    flash[:notice] = 'Listing created successfully'
     redirect_to root_path
+
   end
 
   def new
@@ -34,11 +36,16 @@ class ListingsController < ApplicationController
 
   def destroy
     @listing = Listing.find(params[:id])
+    if @listing.user_id == current_user.id
     @listing.destroy
+    flash[:notice] = 'Listing deleted successfully'
+    else
+      flash[:alert] = "You can't delete this listing it doesn't belong to you"
+    end
     redirect_to root_path
   end
 
   def listings_params
-    params.permit(:title, :location, :description, :user_id)
+    params.permit(:title, :location, :description)
   end
 end
