@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'user/index'
   get 'user/show'
   get 'user/new'
+  post "/user", to: "user#create"
   get 'user/edit'
 
   root to: 'listings#index'
