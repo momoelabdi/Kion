@@ -5,7 +5,9 @@ class ListingsController < ApplicationController
   end
 
   def create
+    @currentUser = current_user.id
     @listing = Listing.new(listings_params)
+    @listing.user_id = @currentUser
     # @listing.attributes = { title: params[:title], location: params[:location], description: params[:description] }
     @listing.save
     redirect_to root_path
@@ -21,7 +23,9 @@ class ListingsController < ApplicationController
 
   def update
     @listing = Listing.find(params[:id])
-    @listing.attributes = { title: params[:title], location: params[:location], description: params[:description] }
+    @currentUser = current_user.id
+    @listing.update(listings_params)
+    @listing.user_id = @currentUser
     @listing.save
     redirect_to root_path
   end
@@ -33,6 +37,6 @@ class ListingsController < ApplicationController
   end
 
   def listings_params
-    params.permit(:title, :location, :description)
+    params.permit(:title, :location, :description, :user_id)
   end
 end
