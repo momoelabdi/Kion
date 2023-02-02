@@ -14,15 +14,15 @@ class UserController < ApplicationController
 
   def create
     @user = User.new(user_params)
-     @user.save
-      redirect_to root_path
+    @user.save notice: "Signed up!"
+    redirect_to root_path
   end
 
 
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :password_digest)
+    params.permit(:name, :email, :password_digest)
   end
 
 end

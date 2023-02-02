@@ -5,8 +5,8 @@ class ListingsController < ApplicationController
   end
 
   def create
-    @listing = Listing.new
-    @listing.attributes = { title: params[:title], location: params[:location], description: params[:description] }
+    @listing = Listing.new(listings_params)
+    # @listing.attributes = { title: params[:title], location: params[:location], description: params[:description] }
     @listing.save
     redirect_to root_path
   end
@@ -30,5 +30,9 @@ class ListingsController < ApplicationController
     @listing = Listing.find(params[:id])
     @listing.destroy
     redirect_to root_path
+  end
+
+  def listings_params
+    params.permit(:title, :location, :description)
   end
 end
