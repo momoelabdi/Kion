@@ -4,7 +4,7 @@
     <label for="exampleInputEmail1" class="form-label">Title</label>
     <input type="text" name="title" class="form-control" >
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-  <input type="hidden" name="user_id" value="<%= current_user_id %>">
+  <input type="hidden" name="user_id" value="<%=  @currentUser %>">
   </div>
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Location</label>

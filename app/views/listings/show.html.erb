@@ -16,6 +16,7 @@
   <div class="form-group">
     <%= label_tag :description %>
     <%= text_area_tag :description, @listing.description, class: 'form-control' %>
+    <input type="hidden" name="user_id" value="<%=  @currentUser %>">
   </div>
   <%= submit_tag 'Update Listing', class: 'btn btn-primary' %>
 <% end %>
