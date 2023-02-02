@@ -5,10 +5,9 @@ class ListingsController < ApplicationController
   end
 
   def create
-    @currentUser = current_user.id
+    @current_user = current_user.id
     @listing = Listing.new(listings_params)
-    @listing.user_id = @currentUser
-    # @listing.attributes = { title: params[:title], location: params[:location], description: params[:description] }
+    @listing.user_id = @current_user
     @listing.save
     redirect_to root_path
   end
@@ -23,10 +22,13 @@ class ListingsController < ApplicationController
 
   def update
     @listing = Listing.find(params[:id])
-    @currentUser = current_user.id
-    @listing.update(listings_params)
-    @listing.user_id = @currentUser
-    @listing.save
+    @current_user = current_user.id
+    if @listing.user_id == @current_user
+      @listing.update(listings_params)
+      @listing.save
+    else
+      flash[:alert] = "You can't edit this listing it doesn't belong to you"
+    end
     redirect_to root_path
   end
 
