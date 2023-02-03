@@ -45,6 +45,16 @@ class ListingsController < ApplicationController
     redirect_to root_path
   end
 
+  def search
+    if params[:search].present?
+      @listings = Listing.search(params[:search])
+    elsif params[:search].blank?
+      redirect_to root_path, alert: 'Empty field!' and return
+    end
+  end
+
+  private
+
   def listings_params
     params.permit(:title, :location, :description)
   end
