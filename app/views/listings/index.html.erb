@@ -17,7 +17,11 @@
       <td><%= listing.title %></td>
       <td><%= listing.location %></td>
       <td><%= listing.description %></td>
+      <% if user_signed_in? %>
       <td><%= link_to "View", listing_path(listing.id)%> </td>
+      <% else %>
+      <td><a href="/users/sign_up">View</a></td>
+      <% end %>
     </tr>
   <% end %>
   </tbody>

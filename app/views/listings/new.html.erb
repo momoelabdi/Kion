@@ -1,18 +1,40 @@
 
-<form method="post" action="/listings">
-  <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Title</label>
-    <input type="text" name="title" class="form-control" >
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-  <input type="hidden" name="user_id" value="<%=  @current_user %>">
-  </div>
-  <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Location</label>
-    <input type="text" name="location" class="form-control" >
-  </div>
-  <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Description</label>
-    <input type="text" name="description" class="form-control" >
-  </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+<% if user_signed_in? %>
+  <form method="post" action="/listings">
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Title</label>
+      <input type="text" name="title" class="form-control" >
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="hidden" name="user_id" value="<%=  @current_user %>">
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Location</label>
+      <input type="text" name="location" class="form-control" >
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Description</label>
+      <input type="text" name="description" class="form-control" >
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+
+<% else %>
+
+  <form>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Title</label>
+      <input type="text" name="" class="form-control" >
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="hidden" name="" value="">
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Location</label>
+      <input type="text"  class="form-control" >
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Description</label>
+      <input type="text"  class="form-control" >
+    </div>
+     <a href="/users/sign_up" class="btn btn-info" >SUBMIT</a>
+  </form>
+<% end %>
