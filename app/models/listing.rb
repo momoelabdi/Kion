@@ -1,17 +1,13 @@
 class Listing < ApplicationRecord
   belongs_to :user
   validates :location, :title, presence: true
+  validates :title, length: { minimum: 3 }
 
   def self.search(search)
     if search
-      listing_location = Listing.find_by(location: search)
-      if listing_location
-        self.where(listing_id: listing_location)
-      else
-        @listings = Listing.all
-      end
+      where('title LIKE ?', "#{search[0..1]}%")
     else
-      @listings = Listing.all
+      all
     end
   end
 end

@@ -1,7 +1,11 @@
 class ListingsController < ApplicationController
 
   def index
-    @listings = Listing.all
+    if params[:search].present?
+       @listings = Listing.search(params[:search])
+    else
+      @listings = Listing.all
+    end
   end
 
   def create
@@ -45,13 +49,13 @@ class ListingsController < ApplicationController
     redirect_to root_path
   end
 
-  def search
-    if params[:search].present?
-      @listings = Listing.search(params[:search])
-    elsif params[:search].blank?
-      redirect_to root_path, alert: 'Empty field!' and return
-    end
-  end
+  # def search
+  #   if params[:search].present?
+  #     @listings = Listing.search(params[:search])
+  #   elsif params[:search].blank?
+  #     redirect_to root_path, alert: 'Empty field!' and return
+  #   end
+  # end
 
   private
 
