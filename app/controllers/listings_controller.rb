@@ -2,7 +2,7 @@ class ListingsController < ApplicationController
 
   def index
     if params[:search].present?
-       @listings = Listing.search(params[:search])
+      @listings = Listing.search(params[:search])
     else
       @listings = Listing.all
     end
@@ -15,7 +15,6 @@ class ListingsController < ApplicationController
     @listing.save
     flash[:notice] = 'Listing created successfully'
     redirect_to root_path
-
   end
 
   def new
@@ -48,14 +47,6 @@ class ListingsController < ApplicationController
     end
     redirect_to root_path
   end
-
-  # def search
-  #   if params[:search].present?
-  #     @listings = Listing.search(params[:search])
-  #   elsif params[:search].blank?
-  #     redirect_to root_path, alert: 'Empty field!' and return
-  #   end
-  # end
 
   private
 
