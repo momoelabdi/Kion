@@ -1,3 +1,4 @@
+import React from 'react';
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
@@ -14,7 +15,7 @@ function Usefetch(url) {
         setData(response.data);
       })
       .catch((error) => {
-        setError("An error occured while fetching data. Please try again later.");
+        setError(console.log(error));
       })
       .finally(() => {
         setLoading(false);
