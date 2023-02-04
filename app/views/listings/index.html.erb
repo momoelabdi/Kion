@@ -1,5 +1,8 @@
 
-<table class="table">
+<div id="root">
+  <%= react_component('App') %>
+</div>
+<%# <table class="table">
   <thead>
     <tr>
       <th scope="col">id</th>
@@ -9,19 +12,19 @@
       <th scope="col">Edit</th>
     </tr>
   </thead>
-  <tbody>
-  <% @listings.each do |listing| %>
-    <tr>
-      <td scope="row"><%= listing.id %></td>
-      <td><%= listing.title %></td>
-      <td><%= listing.location %></td>
-      <td><%= listing.description %></td>
-      <% if user_signed_in? %>
-      <td><%= link_to "View", listing_path(listing.id)%> </td>
-      <% else %>
-      <td><a href="/users/sign_up">View</a></td>
-      <% end %>
-    </tr>
-  <% end %>
-  </tbody>
-</table>
+  <tbody> %>
+  <%# <% @listings.each do |listing| %> %>
+    <%# <tr> %>
+      <%# <td scope="row"><%= listing.id</td> %> %>
+      <%# <td><%= listing.title</td> %> %>
+      <%# <td><%= listing.location</td> %> %>
+      <%# <td><%= listing.description</td> %> %>
+      <%# <% if user_signed_in? %> %>
+      <%# <td><%= link_to "View", listing_path(listing.id) </td> %> %>
+      <%# <% else %> %>
+      <%# <td><a href="/users/sign_up">View</a></td> %>
+      <%# <% end %> %>
+    <%# </tr> %>
+  <%# <% end %> %>
+  <%# </tbody> %>
+<%# </table> %>
