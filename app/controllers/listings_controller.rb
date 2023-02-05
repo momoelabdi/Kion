@@ -6,7 +6,7 @@ class ListingsController < ApplicationController
     else
       @listings = Listing.all
     end
-    # render json: @listings
+    render json: @listings
   end
 
   def create
